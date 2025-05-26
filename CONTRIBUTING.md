@@ -31,29 +31,29 @@
 
 ### Клонирование репозитория
 
-\`\`\`bash
+```bash
 # Форкните репозиторий на GitHub, затем клонируйте свой форк
 git clone https://github.com/YOUR_USERNAME/go-simple-firewall.git
 cd go-simple-firewall
 
 # Добавьте оригинальный репозиторий как upstream
 git remote add upstream https://github.com/hvckfy/go-simple-firewall.git
-\`\`\`
+```
 
 ### Установка зависимостей
 
-\`\`\`bash
+```bash
 # Загрузите зависимости
 go mod tidy
 
 # Проверьте, что все работает
 go build -o firewall cmd/firewall/main.go
 ./firewall --help
-\`\`\`
+```
 
 ## 📁 Структура проекта
 
-\`\`\`
+```
 go-simple-firewall/
 ├── cmd/
 │   └── firewall/
@@ -88,7 +88,7 @@ go-simple-firewall/
 ├── go.mod                       # Go модуль
 ├── go.sum                       # Контрольные суммы зависимостей
 └── README.md                    # Основная документация
-\`\`\`
+```
 
 ### Описание пакетов
 
@@ -120,7 +120,7 @@ go-simple-firewall/
 
 ### Примеры хорошего кода
 
-\`\`\`go
+```go
 // Package security provides various security modules for the firewall.
 package security
 
@@ -159,33 +159,33 @@ func (sc *SecurityChecker) checkSQLInjection(r *http.Request) (bool, string) {
     // Implementation details...
     return false, ""
 }
-\`\`\`
+```
 
 ## 📤 Отправка изменений
 
 ### Workflow
 
 1. **Создайте ветку для вашей функции:**
-\`\`\`bash
+```bash
 git checkout -b feature/new-security-module
-\`\`\`
+```
 
 2. **Внесите изменения и зафиксируйте их:**
-\`\`\`bash
+```bash
 git add .
 git commit -m "feat: add new security module for detecting XYZ attacks"
-\`\`\`
+```
 
 3. **Синхронизируйтесь с upstream:**
-\`\`\`bash
+```bash
 git fetch upstream
 git rebase upstream/main
-\`\`\`
+```
 
 4. **Отправьте изменения в свой форк:**
-\`\`\`bash
+```bash
 git push origin feature/new-security-module
-\`\`\`
+```
 
 5. **Создайте Pull Request на GitHub**
 
@@ -193,13 +193,13 @@ git push origin feature/new-security-module
 
 Мы используем [Conventional Commits](https://www.conventionalcommits.org/):
 
-\`\`\`
+```
 <type>[optional scope]: <description>
 
 [optional body]
 
 [optional footer(s)]
-\`\`\`
+```
 
 **Типы коммитов:**
 - `feat:` - новая функция
@@ -210,12 +210,12 @@ git push origin feature/new-security-module
 - `chore:` - обновление зависимостей, настройки
 
 **Примеры:**
-\`\`\`
+```
 feat(security): add XSS protection module
 fix(ratelimit): fix memory leak in rate limiter
 docs(api): update API documentation for new endpoints
 test(security): add unit tests for SQL injection detection
-\`\`\`
+```
 
 ### Требования к Pull Request
 
@@ -226,7 +226,7 @@ test(security): add unit tests for SQL injection detection
 
 ### Шаблон Pull Request
 
-\`\`\`markdown
+```markdown
 ## Описание
 
 Краткое описание изменений.
@@ -251,7 +251,7 @@ test(security): add unit tests for SQL injection detection
 - [ ] Изменения не генерируют новых предупреждений
 - [ ] Добавлены тесты, которые доказывают, что исправление эффективно или функция работает
 - [ ] Новые и существующие unit тесты проходят локально
-\`\`\`
+```
 
 ## 🐛 Сообщение об ошибках
 
@@ -263,7 +263,7 @@ test(security): add unit tests for SQL injection detection
 
 ### Шаблон Bug Report
 
-\`\`\`markdown
+```markdown
 **Описание бага**
 Четкое и краткое описание того, что является багом.
 
@@ -288,16 +288,16 @@ test(security): add unit tests for SQL injection detection
 Добавьте любой другой контекст о проблеме здесь.
 
 **Логи**
-\`\`\`
+```
 Вставьте соответствующие логи здесь
-\`\`\`
-\`\`\`
+```
+```
 
 ## 💡 Предложение новых функций
 
 ### Шаблон Feature Request
 
-\`\`\`markdown
+```markdown
 **Связана ли ваша функция с проблемой? Опишите.**
 Четкое и краткое описание проблемы. Например: Я всегда расстраиваюсь, когда [...]
 
@@ -309,7 +309,7 @@ test(security): add unit tests for SQL injection detection
 
 **Дополнительный контекст**
 Добавьте любой другой контекст или скриншоты о запросе функции здесь.
-\`\`\`
+```
 
 ## 🏷️ Релизы
 
