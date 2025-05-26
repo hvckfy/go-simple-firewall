@@ -38,7 +38,7 @@
 ### 1. Установка Go
 
 #### Linux (Ubuntu/Debian):
-\`\`\`bash
+```bash
 # Обновляем систему
 sudo apt update && sudo apt upgrade -y
 
@@ -52,17 +52,17 @@ source ~/.bashrc
 
 # Проверяем установку
 go version
-\`\`\`
+```
 
 #### Linux (CentOS/RHEL):
-\`\`\`bash
+```bash
 # Устанавливаем Go
 sudo dnf install golang -y
 # или для старых версий: sudo yum install golang -y
 
 # Проверяем установку
 go version
-\`\`\`
+```
 
 #### Windows:
 1. Скачайте Go с [официального сайта](https://golang.org/dl/)
@@ -70,7 +70,7 @@ go version
 3. Откройте Command Prompt и проверьте: `go version`
 
 #### macOS:
-\`\`\`bash
+```bash
 # Используя Homebrew
 brew install go
 
@@ -79,11 +79,11 @@ brew install go
 
 # Проверяем установку
 go version
-\`\`\`
+```
 
 ### 2. Клонирование и сборка
 
-\`\`\`bash
+```bash
 # Клонируем репозиторий
 git clone https://github.com/hvckfy/go-simple-firewall.git
 cd go-simple-firewall
@@ -96,13 +96,13 @@ go build -o firewall cmd/firewall/main.go
 
 # Проверяем сборку
 ./firewall --help
-\`\`\`
+```
 
 ## 🐧 Установка на Linux
 
 ### Ubuntu/Debian
 
-\`\`\`bash
+```bash
 # 1. Обновляем систему
 sudo apt update && sudo apt upgrade -y
 
@@ -125,11 +125,11 @@ sudo ln -sf /opt/go-simple-firewall/firewall /usr/local/bin/firewall
 
 # 6. Проверяем установку
 firewall --help
-\`\`\`
+```
 
 ### CentOS/RHEL/Fedora
 
-\`\`\`bash
+```bash
 # 1. Обновляем систему
 sudo dnf update -y  # или yum update -y для старых версий
 
@@ -147,11 +147,11 @@ sudo mkdir -p /opt/go-simple-firewall
 sudo cp firewall /opt/go-simple-firewall/
 sudo chmod +x /opt/go-simple-firewall/firewall
 sudo ln -sf /opt/go-simple-firewall/firewall /usr/local/bin/firewall
-\`\`\`
+```
 
 ### Arch Linux
 
-\`\`\`bash
+```bash
 # 1. Обновляем систему
 sudo pacman -Syu
 
@@ -169,13 +169,13 @@ sudo mkdir -p /opt/go-simple-firewall
 sudo cp firewall /opt/go-simple-firewall/
 sudo chmod +x /opt/go-simple-firewall/firewall
 sudo ln -sf /opt/go-simple-firewall/firewall /usr/local/bin/firewall
-\`\`\`
+```
 
 ## 🪟 Установка на Windows
 
 ### Метод 1: Установка через Git Bash
 
-\`\`\`bash
+```bash
 # 1. Установите Git и Go с официальных сайтов
 # Git: https://git-scm.com/download/win
 # Go: https://golang.org/dl/
@@ -190,11 +190,11 @@ go build -o firewall.exe cmd/firewall/main.go
 
 # 4. Проверьте сборку
 ./firewall.exe --help
-\`\`\`
+```
 
 ### Метод 2: Установка через PowerShell
 
-\`\`\`powershell
+```powershell
 # 1. Клонируем репозиторий
 git clone https://github.com/hvckfy/go-simple-firewall.git
 Set-Location go-simple-firewall
@@ -210,13 +210,13 @@ Copy-Item firewall.exe "C:\Program Files\GoSimpleFirewall\"
 # 4. Добавляем в PATH (требует прав администратора)
 $env:PATH += ";C:\Program Files\GoSimpleFirewall"
 [Environment]::SetEnvironmentVariable("PATH", $env:PATH, [EnvironmentVariableTarget]::Machine)
-\`\`\`
+```
 
 ## 🍎 Установка на macOS
 
 ### Метод 1: Используя Homebrew
 
-\`\`\`bash
+```bash
 # 1. Устанавливаем Homebrew (если не установлен)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -233,11 +233,11 @@ go build -o firewall cmd/firewall/main.go
 sudo mkdir -p /usr/local/bin
 sudo cp firewall /usr/local/bin/
 sudo chmod +x /usr/local/bin/firewall
-\`\`\`
+```
 
 ### Метод 2: Ручная установка
 
-\`\`\`bash
+```bash
 # 1. Скачайте и установите Go с https://golang.org/dl/
 # 2. Установите Xcode Command Line Tools
 xcode-select --install
@@ -251,13 +251,13 @@ go build -o firewall cmd/firewall/main.go
 # 4. Устанавливаем
 sudo cp firewall /usr/local/bin/
 sudo chmod +x /usr/local/bin/firewall
-\`\`\`
+```
 
 ## 🐳 Docker установка
 
 ### Создание Dockerfile
 
-\`\`\`dockerfile
+```dockerfile
 FROM golang:1.21-alpine AS builder
 
 WORKDIR /app
@@ -271,11 +271,11 @@ WORKDIR /root/
 COPY --from=builder /app/firewall .
 EXPOSE 8080 9090
 CMD ["./firewall"]
-\`\`\`
+```
 
 ### Сборка и запуск
 
-\`\`\`bash
+```bash
 # Сборка образа
 docker build -t go-simple-firewall .
 
@@ -291,11 +291,11 @@ docker run -d \
 # Проверка статуса
 docker ps
 docker logs firewall
-\`\`\`
+```
 
 ### Docker Compose
 
-\`\`\`yaml
+```yaml
 version: '3.8'
 
 services:
@@ -310,13 +310,13 @@ services:
     restart: unless-stopped
     environment:
       - GO_ENV=production
-\`\`\`
+```
 
 ## ⚙️ Настройка как сервис
 
 ### Linux (systemd)
 
-\`\`\`bash
+```bash
 # 1. Запустите firewall с правами администратора
 sudo ./firewall
 
@@ -335,11 +335,11 @@ sudo systemctl enable go-simple-firewall  # автозапуск
 
 # 7. Просмотр логов
 sudo journalctl -u go-simple-firewall -f
-\`\`\`
+```
 
 ### Windows Service
 
-\`\`\`cmd
+```cmd
 # 1. Запустите Command Prompt от имени администратора
 # 2. Перейдите в директорию с firewall.exe
 # 3. Запустите firewall
@@ -353,11 +353,11 @@ firewall.exe
 sc start GoSimpleFirewall
 sc stop GoSimpleFirewall
 sc query GoSimpleFirewall
-\`\`\`
+```
 
 ### macOS LaunchDaemon
 
-\`\`\`bash
+```bash
 # 1. Запустите firewall с правами администратора
 sudo ./firewall
 
@@ -369,20 +369,20 @@ sudo ./firewall
 sudo launchctl start com.gosimplefirewall.daemon
 sudo launchctl stop com.gosimplefirewall.daemon
 sudo launchctl list | grep gosimplefirewall
-\`\`\`
+```
 
 ## 🎯 Первоначальная настройка
 
 ### 1. Первый запуск
 
-\`\`\`bash
+```bash
 # Запустите firewall
 ./firewall
 
 # Вы увидите сообщения:
 # 🔥 Firewall started on port 8080, proxying to 3000
 # 📊 Admin panel: http://localhost:9090/admin
-\`\`\`
+```
 
 ### 2. Создание учетной записи администратора
 
@@ -412,19 +412,19 @@ sudo launchctl list | grep gosimplefirewall
 
 ### 4. Проверка работы
 
-\`\`\`bash
+```bash
 # Проверьте, что firewall работает
 curl http://localhost:8080
 
 # Проверьте админ-панель
 curl http://localhost:9090/admin
-\`\`\`
+```
 
 ## 🔧 Настройка конфигурационного файла
 
 Firewall создает файл `firewall.json` с настройками:
 
-\`\`\`json
+```json
 {
   "listen_port": 8080,
   "admin_port": 9090,
@@ -462,13 +462,13 @@ Firewall создает файл `firewall.json` с настройками:
   },
   "temporary_bans": []
 }
-\`\`\`
+```
 
 ## 🚨 Устранение неполадок
 
 ### Проблема: Порт уже используется
 
-\`\`\`bash
+```bash
 # Найдите процесс, использующий порт
 sudo netstat -tlnp | grep :8080
 # или
@@ -478,29 +478,29 @@ sudo lsof -i :8080
 sudo kill -9 <PID>
 
 # Или измените порт в конфигурации
-\`\`\`
+```
 
 ### Проблема: Нет прав доступа
 
-\`\`\`bash
+```bash
 # Linux: запустите с sudo
 sudo ./firewall
 
 # Или измените владельца файла
 sudo chown $USER:$USER firewall
 chmod +x firewall
-\`\`\`
+```
 
 ### Проблема: Не удается установить как сервис
 
-\`\`\`bash
+```bash
 # Linux: проверьте права и systemd
 sudo systemctl --version
 sudo systemctl daemon-reload
 
 # Windows: запустите от имени администратора
 # macOS: проверьте права sudo
-\`\`\`
+```
 
 ### Проблема: Firewall не блокирует атаки
 
@@ -518,7 +518,7 @@ sudo systemctl daemon-reload
 
 ### Логи и диагностика
 
-\`\`\`bash
+```bash
 # Просмотр логов firewall
 tail -f firewall.log
 
@@ -530,7 +530,7 @@ ps aux | grep firewall
 
 # Проверка сетевых соединений
 sudo netstat -tlnp | grep firewall
-\`\`\`
+```
 
 ## 📞 Получение помощи
 
