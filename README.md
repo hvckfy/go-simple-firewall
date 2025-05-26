@@ -220,7 +220,7 @@ sc stop GoSimpleFirewall
 
 ## 📞 Поддержка
 
-- 📧 **Email**: [your-email@example.com](mailto:your-email@example.com)
+- 📧 **Email**: [heckfytwitch@gmail.com](mailto:heckfytwitch@gmail.com)
 - 🐛 **Issues**: [GitHub Issues](https://github.com/hvckfy/go-simple-firewall/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/hvckfy/go-simple-firewall/discussions)
 
