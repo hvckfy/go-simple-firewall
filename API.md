@@ -24,14 +24,14 @@ Base URL: `http://localhost:9090/admin/api/`
 
 Все ответы возвращаются в формате JSON:
 
-\`\`\`json
+```json
 {
   "success": true,
   "data": { ... },
   "message": "Operation completed successfully",
   "timestamp": "2024-01-15T14:30:25Z"
 }
-\`\`\`
+```
 
 ### Коды ошибок
 
@@ -48,36 +48,36 @@ Base URL: `http://localhost:9090/admin/api/`
 
 ### Вход в систему
 
-\`\`\`http
+```http
 POST /admin/login
 Content-Type: application/x-www-form-urlencoded
 
 username=admin&password=your_password
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "message": "Login successful",
   "session_expires": "2024-01-16T14:30:25Z"
 }
-\`\`\`
+```
 
 ### Выход из системы
 
-\`\`\`http
+```http
 POST /admin/logout
-\`\`\`
+```
 
 ### Проверка сессии
 
-\`\`\`http
+```http
 GET /admin/api/session
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -86,18 +86,18 @@ GET /admin/api/session
     "expires_at": "2024-01-16T14:30:25Z"
   }
 }
-\`\`\`
+```
 
 ## 📊 Статистика
 
 ### Общая статистика
 
-\`\`\`http
+```http
 GET /admin/api/summary
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -110,16 +110,16 @@ GET /admin/api/summary
     "start_time": "2024-01-14T14:30:25Z"
   }
 }
-\`\`\`
+```
 
 ### Почасовая статистика
 
-\`\`\`http
+```http
 GET /admin/api/hourly-stats
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": [
@@ -137,19 +137,19 @@ GET /admin/api/hourly-stats
     }
   ]
 }
-\`\`\`
+```
 
 ### Топ IP адресов
 
-\`\`\`http
+```http
 GET /admin/api/top-ips?limit=10
-\`\`\`
+```
 
 **Параметры:**
 - `limit` (optional) - количество записей (по умолчанию 10)
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": [
@@ -167,16 +167,16 @@ GET /admin/api/top-ips?limit=10
     }
   ]
 }
-\`\`\`
+```
 
 ### Топ User-Agent'ов
 
-\`\`\`http
+```http
 GET /admin/api/top-uas?limit=10
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": [
@@ -192,16 +192,16 @@ GET /admin/api/top-uas?limit=10
     }
   ]
 }
-\`\`\`
+```
 
 ### Статистика атак
 
-\`\`\`http
+```http
 GET /admin/api/attack-stats
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -214,18 +214,18 @@ GET /admin/api/attack-stats
     "malicious_files": 12
   }
 }
-\`\`\`
+```
 
 ## 🌐 Управление IP
 
 ### Получить списки IP
 
-\`\`\`http
+```http
 GET /admin/api/ip-lists
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -246,11 +246,11 @@ GET /admin/api/ip-lists
     ]
   }
 }
-\`\`\`
+```
 
 ### Заблокировать IP
 
-\`\`\`http
+```http
 POST /admin/api/ban-ip
 Content-Type: application/json
 
@@ -258,30 +258,30 @@ Content-Type: application/json
   "ip": "192.168.1.100",
   "reason": "Manual ban"
 }
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "message": "IP 192.168.1.100 has been banned"
 }
-\`\`\`
+```
 
 ### Разблокировать IP
 
-\`\`\`http
+```http
 POST /admin/api/unban-ip
 Content-Type: application/json
 
 {
   "ip": "192.168.1.100"
 }
-\`\`\`
+```
 
 ### Добавить в whitelist
 
-\`\`\`http
+```http
 POST /admin/api/whitelist-ip
 Content-Type: application/json
 
@@ -289,22 +289,22 @@ Content-Type: application/json
   "ip": "192.168.1.1",
   "comment": "Office IP"
 }
-\`\`\`
+```
 
 ### Удалить из whitelist
 
-\`\`\`http
+```http
 DELETE /admin/api/whitelist-ip
 Content-Type: application/json
 
 {
   "ip": "192.168.1.1"
 }
-\`\`\`
+```
 
 ### Создать временный бан
 
-\`\`\`http
+```http
 POST /admin/api/temp-ban
 Content-Type: application/json
 
@@ -313,29 +313,29 @@ Content-Type: application/json
   "reason": "Suspicious activity",
   "duration_minutes": 60
 }
-\`\`\`
+```
 
 ### Снять временный бан
 
-\`\`\`http
+```http
 DELETE /admin/api/temp-ban
 Content-Type: application/json
 
 {
   "ip": "10.0.0.50"
 }
-\`\`\`
+```
 
 ## ⚙️ Конфигурация
 
 ### Получить конфигурацию
 
-\`\`\`http
+```http
 GET /admin/api/config
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -352,11 +352,11 @@ GET /admin/api/config
     }
   }
 }
-\`\`\`
+```
 
 ### Обновить основные настройки
 
-\`\`\`http
+```http
 PUT /admin/api/config/basic
 Content-Type: application/json
 
@@ -365,11 +365,11 @@ Content-Type: application/json
   "enable_logging": true,
   "enable_firewall": true
 }
-\`\`\`
+```
 
 ### Обновить настройки безопасности
 
-\`\`\`http
+```http
 PUT /admin/api/config/security
 Content-Type: application/json
 
@@ -380,11 +380,11 @@ Content-Type: application/json
   "ddos_threshold": 150,
   "ddos_time_window": 60
 }
-\`\`\`
+```
 
 ### Обновить порты
 
-\`\`\`http
+```http
 PUT /admin/api/config/ports
 Content-Type: application/json
 
@@ -393,15 +393,15 @@ Content-Type: application/json
   "target_port": 3000,
   "admin_port": 9090
 }
-\`\`\`
+```
 
 ## 📝 Логи
 
 ### Получить последние логи
 
-\`\`\`http
+```http
 GET /admin/api/logs?lines=100&filter=BLOCKED
-\`\`\`
+```
 
 **Параметры:**
 - `lines` (optional) - количество строк (по умолчанию 50)
@@ -409,7 +409,7 @@ GET /admin/api/logs?lines=100&filter=BLOCKED
 - `since` (optional) - с определенного времени (ISO 8601)
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -421,19 +421,19 @@ GET /admin/api/logs?lines=100&filter=BLOCKED
     "filtered_lines": 156
   }
 }
-\`\`\`
+```
 
 ### Очистить логи
 
-\`\`\`http
+```http
 DELETE /admin/api/logs
-\`\`\`
+```
 
 ### Экспорт логов
 
-\`\`\`http
+```http
 GET /admin/api/logs/export?format=csv&since=2024-01-15T00:00:00Z
-\`\`\`
+```
 
 **Параметры:**
 - `format` - формат экспорта (csv, json, txt)
@@ -444,12 +444,12 @@ GET /admin/api/logs/export?format=csv&since=2024-01-15T00:00:00Z
 
 ### Статус сервиса
 
-\`\`\`http
+```http
 GET /admin/api/service-status
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -460,46 +460,46 @@ GET /admin/api/service-status
     "cpu_usage": "2.1%"
   }
 }
-\`\`\`
+```
 
 ### Перезапуск системы
 
-\`\`\`http
+```http
 POST /admin/api/restart
-\`\`\`
+```
 
 ### Установка как сервис
 
-\`\`\`http
+```http
 POST /admin/api/install-service
-\`\`\`
+```
 
 ### Удаление сервиса
 
-\`\`\`http
+```http
 DELETE /admin/api/install-service
-\`\`\`
+```
 
 ### Запуск сервиса
 
-\`\`\`http
+```http
 POST /admin/api/service/start
-\`\`\`
+```
 
 ### Остановка сервиса
 
-\`\`\`http
+```http
 POST /admin/api/service/stop
-\`\`\`
+```
 
 ### Системная информация
 
-\`\`\`http
+```http
 GET /admin/api/system-info
-\`\`\`
+```
 
 **Ответ:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -512,13 +512,13 @@ GET /admin/api/system-info
     "start_time": "2024-01-14T14:30:25Z"
   }
 }
-\`\`\`
+```
 
 ## 🔄 WebSocket API
 
 ### Подключение к WebSocket
 
-\`\`\`javascript
+```javascript
 const ws = new WebSocket('ws://localhost:9090/admin/api/ws');
 
 ws.onopen = function() {
@@ -529,12 +529,12 @@ ws.onmessage = function(event) {
     const data = JSON.parse(event.data);
     console.log('Received:', data);
 };
-\`\`\`
+```
 
 ### Типы сообщений
 
 **Статистика в реальном времени:**
-\`\`\`json
+```json
 {
   "type": "stats_update",
   "data": {
@@ -543,10 +543,10 @@ ws.onmessage = function(event) {
     "active_connections": 45
   }
 }
-\`\`\`
+```
 
 **Новая атака:**
-\`\`\`json
+```json
 {
   "type": "attack_detected",
   "data": {
@@ -556,10 +556,10 @@ ws.onmessage = function(event) {
     "timestamp": "2024-01-15T14:30:25Z"
   }
 }
-\`\`\`
+```
 
 **Новый бан:**
-\`\`\`json
+```json
 {
   "type": "ip_banned",
   "data": {
@@ -568,23 +568,23 @@ ws.onmessage = function(event) {
     "duration": "30 minutes"
   }
 }
-\`\`\`
+```
 
 ### Подписка на события
 
-\`\`\`javascript
+```javascript
 // Подписка на определенные типы событий
 ws.send(JSON.stringify({
     "action": "subscribe",
     "events": ["attack_detected", "ip_banned", "stats_update"]
 }));
-\`\`\`
+```
 
 ## 💡 Примеры использования
 
 ### Python клиент
 
-\`\`\`python
+```python
 import requests
 import json
 
@@ -633,11 +633,11 @@ api.ban_ip("192.168.1.100", "Suspicious activity")
 top_ips = api.get_top_ips(5)
 for ip_info in top_ips['data']:
     print(f"IP: {ip_info['ip']}, Requests: {ip_info['requests']}")
-\`\`\`
+```
 
 ### JavaScript клиент
 
-\`\`\`javascript
+```javascript
 class FirewallAPI {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
@@ -700,11 +700,11 @@ console.log('Total requests:', stats.data.total_requests);
 
 // Блокировка IP
 await api.banIP('192.168.1.100', 'Suspicious activity');
-\`\`\`
+```
 
 ### Bash скрипты
 
-\`\`\`bash
+```bash
 #!/bin/bash
 
 # Конфигурация
@@ -744,11 +744,11 @@ login
 get_stats
 ban_ip "192.168.1.100" "Automated ban"
 get_top_ips 5
-\`\`\`
+```
 
 ### Мониторинг скрипт
 
-\`\`\`bash
+```bash
 #!/bin/bash
 
 # Скрипт мониторинга firewall
@@ -776,7 +776,7 @@ echo "$TOP_IPS" | jq -r '.data[] | "\(.ip): \(.requests) requests, \(.blocked) b
 
 # Очистка
 rm -f /tmp/fw_cookies.txt
-\`\`\`
+```
 
 ## 🔒 Безопасность API
 
@@ -792,20 +792,20 @@ API endpoints имеют собственные лимиты:
 
 API поддерживает CORS для веб-приложений:
 
-\`\`\`
+```
 Access-Control-Allow-Origin: http://localhost:3000
 Access-Control-Allow-Methods: GET, POST, PUT, DELETE
 Access-Control-Allow-Headers: Content-Type, Authorization
-\`\`\`
+```
 
 ### API ключи (планируется)
 
 В будущих версиях будет добавлена поддержка API ключей:
 
-\`\`\`http
+```http
 GET /admin/api/summary
 Authorization: Bearer your-api-key
-\`\`\`
+```
 
 ---
 
