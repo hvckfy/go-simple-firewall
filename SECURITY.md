@@ -41,7 +41,7 @@ Go Simple Firewall предоставляет многоуровневую за�
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_sql_protection": true,
@@ -54,15 +54,15 @@ Go Simple Firewall предоставляет многоуровневую за�
     ]
   }
 }
-\`\`\`
+```
 
 ### Примеры блокируемых запросов
 
-\`\`\`
+```
 GET /search?q=1' UNION SELECT * FROM users--
 POST /login with data: username=admin' OR '1'='1
 GET /product?id=1; DROP TABLE products;
-\`\`\`
+```
 
 ### Настройка через админ-панель
 
@@ -75,24 +75,24 @@ GET /product?id=1; DROP TABLE products;
 ### Рекомендуемые ключевые слова
 
 **Базовые SQL команды:**
-\`\`\`
+```
 union, select, insert, delete, update, drop, create, alter
-\`\`\`
+```
 
 **Функции и операторы:**
-\`\`\`
+```
 exec, execute, cast, convert, concat, substring, ascii, char
-\`\`\`
+```
 
 **Системные таблицы:**
-\`\`\`
+```
 information_schema, sysobjects, syscolumns, pg_tables, sqlite_master
-\`\`\`
+```
 
 **Комментарии и завершители:**
-\`\`\`
+```
 --, /*, */, #, ;
-\`\`\`
+```
 
 ## 🎭 XSS Protection
 
@@ -102,7 +102,7 @@ information_schema, sysobjects, syscolumns, pg_tables, sqlite_master
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_xss_protection": true,
@@ -114,37 +114,37 @@ information_schema, sysobjects, syscolumns, pg_tables, sqlite_master
     ]
   }
 }
-\`\`\`
+```
 
 ### Примеры блокируемых запросов
 
-\`\`\`
+```
 GET /search?q=<script>alert('XSS')</script>
 POST /comment with data: text=<img src=x onerror=alert(1)>
 GET /redirect?url=javascript:alert(document.cookie)
-\`\`\`
+```
 
 ### Расширенные XSS паттерны
 
 **HTML события:**
-\`\`\`
+```
 onload, onerror, onclick, onmouseover, onfocus, onblur, onchange, onsubmit
-\`\`\`
+```
 
 **JavaScript функции:**
-\`\`\`
+```
 eval, setTimeout, setInterval, Function, alert, confirm, prompt
-\`\`\`
+```
 
 **DOM манипуляции:**
-\`\`\`
+```
 document.write, innerHTML, outerHTML, insertAdjacentHTML
-\`\`\`
+```
 
 **Протоколы:**
-\`\`\`
+```
 javascript:, data:, vbscript:, livescript:
-\`\`\`
+```
 
 ## 🌊 DDoS Protection
 
@@ -154,7 +154,7 @@ javascript:, data:, vbscript:, livescript:
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_ddos_protection": true,
@@ -163,7 +163,7 @@ javascript:, data:, vbscript:, livescript:
     "ddos_ban_duration": 30
   }
 }
-\`\`\`
+```
 
 ### Параметры
 
@@ -176,31 +176,31 @@ javascript:, data:, vbscript:, livescript:
 ### Рекомендации по настройке
 
 **Для статических сайтов:**
-\`\`\`json
+```json
 {
   "ddos_threshold": 50,
   "ddos_time_window": 60,
   "ddos_ban_duration": 30
 }
-\`\`\`
+```
 
 **Для API сервисов:**
-\`\`\`json
+```json
 {
   "ddos_threshold": 200,
   "ddos_time_window": 30,
   "ddos_ban_duration": 15
 }
-\`\`\`
+```
 
 **Для высоконагруженных приложений:**
-\`\`\`json
+```json
 {
   "ddos_threshold": 500,
   "ddos_time_window": 60,
   "ddos_ban_duration": 10
 }
-\`\`\`
+```
 
 ### Алгоритм работы
 
@@ -217,7 +217,7 @@ javascript:, data:, vbscript:, livescript:
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_scanner_protection": true,
@@ -229,54 +229,54 @@ javascript:, data:, vbscript:, livescript:
     ]
   }
 }
-\`\`\`
+```
 
 ### Популярные пути сканеров
 
 **Административные панели:**
-\`\`\`
+```
 /admin, /administrator, /wp-admin, /cpanel, /plesk, /webmin
-\`\`\`
+```
 
 **Файлы конфигурации:**
-\`\`\`
+```
 /.env, /config, /.git, /.svn, /web.config, /.htaccess
-\`\`\`
+```
 
 **Базы данных:**
-\`\`\`
+```
 /phpmyadmin, /adminer, /mysql, /postgresql, /mongodb
-\`\`\`
+```
 
 **Резервные копии:**
-\`\`\`
+```
 /backup, /backups, /dump, /sql, /database
-\`\`\`
+```
 
 **Тестовые окружения:**
-\`\`\`
+```
 /test, /testing, /demo, /staging, /dev, /development
-\`\`\`
+```
 
 ### Настройка для конкретных CMS
 
 **WordPress:**
-\`\`\`
+```
 /wp-admin, /wp-login.php, /wp-config.php, /wp-content/uploads,
 /xmlrpc.php, /wp-json, /readme.html, /license.txt
-\`\`\`
+```
 
 **Drupal:**
-\`\`\`
+```
 /admin, /user, /node, /sites/default, /modules, /themes,
 /install.php, /update.php, /cron.php
-\`\`\`
+```
 
 **Joomla:**
-\`\`\`
+```
 /administrator, /installation, /configuration.php, /htaccess.txt,
 /web.config.txt, /joomla.xml
-\`\`\`
+```
 
 ## 🤖 Bot Protection
 
@@ -286,7 +286,7 @@ javascript:, data:, vbscript:, livescript:
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_bot_protection": true,
@@ -297,47 +297,47 @@ javascript:, data:, vbscript:, livescript:
     ]
   }
 }
-\`\`\`
+```
 
 ### Категории ботов
 
 **Сканеры уязвимостей:**
-\`\`\`
+```
 nikto, nessus, openvas, acunetix, burpsuite, zap, w3af
-\`\`\`
+```
 
 **SQL инъекция инструменты:**
-\`\`\`
+```
 sqlmap, havij, pangolin, safe3si, bsqlbf
-\`\`\`
+```
 
 **Сетевые сканеры:**
-\`\`\`
+```
 nmap, masscan, zmap, unicornscan, hping
-\`\`\`
+```
 
 **Автоматические инструменты:**
-\`\`\`
+```
 curl, wget, python-requests, go-http-client, java, perl
-\`\`\`
+```
 
 **Вредоносные боты:**
-\`\`\`
+```
 semrushbot, ahrefsbot, mj12bot, dotbot, blexbot
-\`\`\`
+```
 
 ### Исключения для легитимных ботов
 
 Если вам нужно разрешить определенных ботов (например, поисковых), используйте whitelist:
 
-\`\`\`json
+```json
 {
   "allowed_user_agents": [
     "Googlebot", "Bingbot", "Slurp", "DuckDuckBot",
     "Baiduspider", "YandexBot", "facebookexternalhit"
   ]
 }
-\`\`\`
+```
 
 ## 📁 Directory Protection
 
@@ -347,7 +347,7 @@ semrushbot, ahrefsbot, mj12bot, dotbot, blexbot
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_directory_protection": true,
@@ -358,37 +358,37 @@ semrushbot, ahrefsbot, mj12bot, dotbot, blexbot
     ]
   }
 }
-\`\`\`
+```
 
 ### Системы контроля версий
 
-\`\`\`
+```
 /.git, /.svn, /.hg, /.bzr, /CVS, /.gitignore, /.gitmodules
-\`\`\`
+```
 
 ### Конфигурационные файлы
 
-\`\`\`
+```
 /.env, /config, /.config, /settings, /conf, /etc
-\`\`\`
+```
 
 ### Временные и служебные директории
 
-\`\`\`
+```
 /tmp, /temp, /cache, /logs, /log, /var, /storage
-\`\`\`
+```
 
 ### IDE и редакторы
 
-\`\`\`
+```
 /.vscode, /.idea, /.sublime-project, /.atom, /.brackets
-\`\`\`
+```
 
 ### Зависимости и библиотеки
 
-\`\`\`
+```
 /node_modules, /vendor, /bower_components, /packages
-\`\`\`
+```
 
 ## 📄 Suffix Protection
 
@@ -398,7 +398,7 @@ semrushbot, ahrefsbot, mj12bot, dotbot, blexbot
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_suffix_protection": true,
@@ -409,29 +409,29 @@ semrushbot, ahrefsbot, mj12bot, dotbot, blexbot
     "suffix_ban_duration": 10
   }
 }
-\`\`\`
+```
 
 ### Категории опасных файлов
 
 **Серверные скрипты:**
-\`\`\`
+```
 .php, .asp, .aspx, .jsp, .cgi, .pl, .py, .rb, .lua
-\`\`\`
+```
 
 **Исполняемые файлы:**
-\`\`\`
+```
 .exe, .bat, .cmd, .sh, .ps1, .vbs, .jar
-\`\`\`
+```
 
 **Конфигурационные файлы:**
-\`\`\`
+```
 .conf, .config, .ini, .cfg, .properties, .xml
-\`\`\`
+```
 
 **Базы данных:**
-\`\`\`
+```
 .sql, .db, .sqlite, .mdb, .accdb
-\`\`\`
+```
 
 ### Настройка длительности бана
 
@@ -450,19 +450,19 @@ semrushbot, ahrefsbot, mj12bot, dotbot, blexbot
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_geo_blocking": true,
     "blocked_countries": ["CN", "RU", "KP", "IR", "SY"]
   }
 }
-\`\`\`
+```
 
 ### ISO коды стран
 
 **Часто блокируемые страны:**
-\`\`\`
+```
 CN - Китай
 RU - Россия  
 KP - Северная Корея
@@ -470,16 +470,16 @@ IR - Иран
 SY - Сирия
 VE - Венесуэла
 CU - Куба
-\`\`\`
+```
 
 **Европейские страны:**
-\`\`\`
+```
 DE - Германия
 FR - Франция
 GB - Великобритания
 IT - Италия
 ES - Испания
-\`\`\`
+```
 
 ### Реализация геоблокировки
 
@@ -497,11 +497,11 @@ ES - Испания
 
 ### Конфигурация
 
-\`\`\`json
+```json
 {
   "rate_limit_rps": 60
 }
-\`\`\`
+```
 
 ### Рекомендуемые значения
 
@@ -525,7 +525,7 @@ ES - Испания
 
 Всегда разрешенные IP адреса, которые обходят все проверки:
 
-\`\`\`json
+```json
 {
   "allowed_ips": {
     "127.0.0.1": true,
@@ -534,13 +534,13 @@ ES - Испания
     "10.0.0.0/8": true
   }
 }
-\`\`\`
+```
 
 ### Blacklist (Черный список)
 
 Постоянно заблокированные IP адреса:
 
-\`\`\`json
+```json
 {
   "banned_ips": {
     "192.168.1.100": true,
@@ -548,7 +548,7 @@ ES - Испания
     "2001:db8::/32": true
   }
 }
-\`\`\`
+```
 
 ### Поддерживаемые форматы
 
@@ -563,7 +563,7 @@ ES - Испания
 
 Firewall собирает следующие метрики:
 
-\`\`\`json
+```json
 {
   "security_metrics": {
     "total_blocked": 1250,
@@ -576,13 +576,13 @@ Firewall собирает следующие метрики:
     "malicious_file_requests": 12
   }
 }
-\`\`\`
+```
 
 ### Алерты и уведомления
 
 Настройка уведомлений о критических событиях:
 
-\`\`\`bash
+```bash
 # Мониторинг логов в реальном времени
 tail -f firewall.log | grep "ATTACK"
 
@@ -591,16 +591,16 @@ grep "$(date '+%Y-%m-%d %H')" firewall.log | grep "ATTACK" | wc -l
 
 # Топ атакующих IP
 grep "ATTACK" firewall.log | awk '{print $3}' | sort | uniq -c | sort -nr | head -10
-\`\`\`
+```
 
 ### Интеграция с системами мониторинга
 
 **Prometheus метрики:**
-\`\`\`
+```
 firewall_requests_total{status="blocked"}
 firewall_attacks_total{type="sql_injection"}
 firewall_banned_ips_total
-\`\`\`
+```
 
 **Grafana дашборд:**
 - График заблокированных запросов
@@ -614,7 +614,7 @@ firewall_banned_ips_total
 
 Используйте несколько модулей одновременно:
 
-\`\`\`json
+```json
 {
   "security": {
     "enable_sql_protection": true,
@@ -624,7 +624,7 @@ firewall_banned_ips_total
     "enable_bot_protection": true
   }
 }
-\`\`\`
+```
 
 ### 2. Настройка под тип приложения
 
@@ -640,26 +640,26 @@ firewall_banned_ips_total
 
 ### 3. Регулярное обновление правил
 
-\`\`\`bash
+```bash
 # Еженедельное обновление списков
 # Добавляйте новые SQL ключевые слова
 # Обновляйте списки вредоносных User-Agent'ов
 # Анализируйте логи на предмет новых угроз
-\`\`\`
+```
 
 ### 4. Мониторинг и анализ
 
-\`\`\`bash
+```bash
 # Ежедневный анализ логов
 grep "$(date '+%Y-%m-%d')" firewall.log | grep "BLOCKED" > daily_blocks.log
 
 # Еженедельный отчет по безопасности
 awk '/ATTACK/ {attacks[$4]++} END {for (type in attacks) print type, attacks[type]}' firewall.log
-\`\`\`
+```
 
 ### 5. Тестирование защиты
 
-\`\`\`bash
+```bash
 # Тест SQL injection защиты
 curl "http://localhost:8080/search?q=1' UNION SELECT * FROM users--"
 
@@ -668,28 +668,28 @@ curl "http://localhost:8080/comment" -d "text=<script>alert('xss')</script>"
 
 # Тест DDoS защиты
 for i in {1..200}; do curl http://localhost:8080/ & done
-\`\`\`
+```
 
 ### 6. Резервное копирование конфигурации
 
-\`\`\`bash
+```bash
 # Ежедневное резервное копирование
 cp firewall.json /backup/firewall-$(date +%Y%m%d).json
 
 # Версионирование в Git
 git add firewall.json
 git commit -m "Security config update $(date)"
-\`\`\`
+```
 
 ### 7. Документирование изменений
 
 Ведите журнал изменений безопасности:
 
-\`\`\`
+```
 2024-01-15: Добавлены новые SQL ключевые слова
 2024-01-14: Увеличен DDoS threshold до 150
 2024-01-13: Заблокированы IP из диапазона 203.0.113.0/24
-\`\`\`
+```
 
 ### 8. Обучение команды
 
@@ -718,7 +718,7 @@ git commit -m "Security config update $(date)"
 
 ### Автоматическое реагирование
 
-\`\`\`bash
+```bash
 #!/bin/bash
 # Скрипт автоматического реагирования
 
@@ -734,7 +734,7 @@ if [ $ATTACKS -gt 50 ]; then
     echo "High attack volume detected: $ATTACKS attacks" | \
          mail -s "Security Alert" admin@example.com
 fi
-\`\`\`
+```
 
 ---
 
